@@ -204,4 +204,66 @@ BuySeed("Grape")
 end
 end)
 end})
+local EasterShop = Tabs.Main:AddRightGroupbox("Easter Shop")
+function BuyEaster(name)
+local args = {
+    [1] = name
+}
 
+game:GetService("ReplicatedStorage").GameEvents.BuyEasterStock:FireServer(unpack(args))
+end
+EasterShop:AddToggle("MyToggle",{
+Text = "Auto Buy Chocolate Carrot Seed",
+Default = false,
+Callback = function(v)
+_G.AutoBuyChocolateCarrotSeed = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyChocolateCarrotSeed then
+BuyEaster("Chocolate Carrot")
+end
+end)
+end})
+EasterShop:AddToggle("MyToggle",{
+Text = "Auto Buy Red Lollipop Seed",
+Default = false,
+Callback = function(v)
+_G.AutoBuyRedLollipopSeed = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyRedLollipopSeed then
+BuyEaster("Red Lollipop")
+end
+end)
+end})
+EasterShop:AddToggle("MyToggle",{
+Text = "Auto Buy Easter Seed",
+Default = false,
+Callback = function(v)
+_G.AutoBuyEasterSeed = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyEasterSeed then
+BuySeed("Easter")
+end
+end)
+end})
+EasterShop:AddToggle("MyToggle",{
+Text = "Auto Buy Chocolate Sprinkler",
+Default = false,
+Callback = function(v)
+_G.AutoBuyChocolateSprinkler = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyChocolateSprinkler then
+BuySeed("Chocolate Sprinkler")
+end
+end)
+end})
+EasterShop:AddToggle("MyToggle",{
+Text = "Auto Buy Candy Blossom Seed",
+Default = false,
+Callback = function(v)
+_G.AutoBuyCandyBlossomSeed = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyCandyBlossomSeed then
+BuySeed("Candy Blossom")
+end
+end)
+end})
