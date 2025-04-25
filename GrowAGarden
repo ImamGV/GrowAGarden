@@ -10,7 +10,7 @@ Library.ShowCustomCursor = true
 Library.NotifySide = "Left"
 
 local Window = Library:CreateWindow({
-	Title = 'Example menu',
+	Title = 'YOUHUB | Grow A Garden',
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
@@ -234,6 +234,17 @@ end
 end)
 end})
 EventGearShop:AddToggle("MyToggle",{
+Text = "Auto Buy Candy Sunflower Seed",
+Default = false,
+Callback = function(v)
+_G.AutoBuyCandySunflowerSeed = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyCandySunflowerSeed then
+BuyEaster("Candy Sunflower")
+end
+end)
+end})
+EventGearShop:AddToggle("MyToggle",{
 Text = "Auto Buy Easter Egg Seed",
 Default = false,
 Callback = function(v)
@@ -335,3 +346,13 @@ BuySprinkler("Master Sprinkler")
 end
 end)
 end})
+EventGearShop:AddDivider()
+EventGearShop:AddButton("Seed UI",function()
+game.Players.LocalPlayer.PlayersGui.Seed_Shop.Enabled = not game.Players.LocalPlayer.PlayersGui.Seed_Shop.Enabled
+end)
+EventGearShop:AddButton("Gear UI",function()
+game.Players.LocalPlayer.PlayersGui.Gear_Shop.Enabled = not game.Players.LocalPlayer.PlayersGui.Gear_Shop.Enabled
+end)
+EventGearShop:AddButton("Easter UI",function()
+game.Players.LocalPlayer.PlayersGui.Easter_Shop.Enabled = not game.Players.LocalPlayer.PlayersGui.Easter_Shop.Enabled
+end)
