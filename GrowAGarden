@@ -348,11 +348,14 @@ end)
 end})
 EventGearShop:AddDivider()
 EventGearShop:AddButton("Seed UI",function()
-game.Players.LocalPlayer.PlayersGui.Seed_Shop.Enabled = not game.Players.LocalPlayer.PlayersGui.Seed_Shop.Enabled
+game.Players.LocalPlayer.PlayerGui.Seed_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.Seed_Shop.Enabled
 end)
 EventGearShop:AddButton("Gear UI",function()
-game.Players.LocalPlayer.PlayersGui.Gear_Shop.Enabled = not game.Players.LocalPlayer.PlayersGui.Gear_Shop.Enabled
+game.Players.LocalPlayer.PlayerGui.Gear_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.Gear_Shop.Enabled
 end)
 EventGearShop:AddButton("Easter UI",function()
-game.Players.LocalPlayer.PlayersGui.Easter_Shop.Enabled = not game.Players.LocalPlayer.PlayersGui.Easter_Shop.Enabled
+game.Players.LocalPlayer.PlayerGui.Easter_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.Easter_Shop.Enabled
+end)
+EventGearShop:AddButton("Daily Quest UI",function()
+game.Players.LocalPlayer.PlayerGui.DailyQuest_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.DailyQuest_Shop.Enabled
 end)
