@@ -216,19 +216,19 @@ end
 end)
 end})
 SeedShop:AddDivider()
-function Sell_Inventory()
-for _,v in ipairs(workspace.NPCS:GetDescendants()) do
+function SellInventory()
+for _,v in ipairs(workspace:GetDescendants()) do
 if v.Name == "Steven" then
-if (v.HumanoidRootPart.Position).Magnitude <= 20 then
+if (v.HumanoidRootPart.Position).Magnitude < 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Inventory:FireServer()
 end
 end
 end
 end
-function Sell_ItemHold()
-for _,v in ipairs(workspace.NPCS:GetDescendants()) do
+function SellItemHold()
+for _,v in ipairs(workspace:GetDescendants()) do
 if v.Name == "Steven" then
-if (v.HumanoidRootPart.Position).Magnitude <= 20 then
+if (v.HumanoidRootPart.Position).Magnitude < 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Item:FireServer()
 end
 end
@@ -241,7 +241,7 @@ Callback = function(v)
 _G.AutoSellInventoryNear = v
 game:GetService("RunService").RenderStepped:Connect(function()
 if _G.AutoSellInventoryNear then
-Sell_Inventory()
+SellInventory()
 end
 end)
 end})
@@ -252,7 +252,7 @@ Callback = function(v)
 _G.AutoSellItemHoldNear = v
 game:GetService("RunService").RenderStepped:Connect(function()
 if _G.AutoSellItemHoldNear then
-Sell_ItemHold()
+SellItemHold()
 end
 end)
 end})
