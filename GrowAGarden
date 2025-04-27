@@ -297,11 +297,6 @@ local args = {
 
 game:GetService("ReplicatedStorage").GameEvents.BuyGearStock:FireServer(unpack(args))
 end
---Watering Can
---Basic
---Advanced
---Godly
---Master
 EventGearShop:AddToggle("MyToggle",{
 Text = "Auto Buy Watering Can",
 Default = false,
@@ -310,6 +305,17 @@ _G.AutoBuyWateringCan = v
 game:GetService("RunService").RenderStepped:Connect(function()
 if _G.AutoBuyWateringCan then
 BuySprinkler("Watering Can")
+end
+end)
+end})
+EventGearShop:AddToggle("MyToggle",{
+Text = "Auto Buy Trawel",
+Default = false,
+Callback = function(v)
+_G.AutoBuyTrawel = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyTrawel then
+BuySprinkler("Trawel")
 end
 end)
 end})
@@ -343,6 +349,17 @@ _G.AutoBuyGodlySprinkler = v
 game:GetService("RunService").RenderStepped:Connect(function()
 if _G.AutoBuyGodlySprinkler then
 BuySprinkler("Godly Sprinkler")
+end
+end)
+end})
+EventGearShop:AddToggle("MyToggle",{
+Text = "Auto Buy Lightning Rod",
+Default = false,
+Callback = function(v)
+_G.AutoBuyLightningRod = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyLightningRod then
+BuySprinkler("Lightning Rod")
 end
 end)
 end})
