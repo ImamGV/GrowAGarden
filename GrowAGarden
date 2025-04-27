@@ -217,21 +217,13 @@ end)
 end})
 SeedShop:AddDivider()
 function SellInventory()
-for _,v in ipairs(workspace:GetDescendants()) do
-if v.Name == "Steven" then
-if (v.HumanoidRootPart.Position).Magnitude < 30 then
+if (workspace.NPCS.Steven.HumanoidRootPart.Position).Magnitude < 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Inventory:FireServer()
 end
 end
-end
-end
 function SellItemHold()
-for _,v in ipairs(workspace:GetDescendants()) do
-if v.Name == "Steven" then
-if (v.HumanoidRootPart.Position).Magnitude < 30 then
+if (workspace.NPCS.Steven.HumanoidRootPart.Position).Magnitude < 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Item:FireServer()
-end
-end
 end
 end
 SeedShop:AddToggle("MyToggle",{
