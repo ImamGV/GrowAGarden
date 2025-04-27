@@ -10,7 +10,7 @@ Library.ShowCustomCursor = true
 Library.NotifySide = "Left"
 
 local Window = Library:CreateWindow({
-	Title = 'YOUHUB | Grow A Garden | <•> Alpha v.0.0.1 <•>',
+	Title = 'YOUHUB | Grow A Garden | Alpha v.0.0.1 ',
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
