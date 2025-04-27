@@ -10,14 +10,14 @@ Library.ShowCustomCursor = true
 Library.NotifySide = "Left"
 
 local Window = Library:CreateWindow({
-	Title = 'YOUHUB | Grow A Garden | ✧ Alpha v.0.0.1 ✧',
+	Title = 'YOUHUB | Grow A Garden | <•> Alpha v.0.0.1 <•>',
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
 	ShowCustomCursor = true,
 	NotifySide = "Right",
 	TabPadding = 8,
-	MenuFadeTime = 0.5
+	MenuFadeTime = 0
 })
 
 local Tabs = {
@@ -217,12 +217,13 @@ end)
 end})
 SeedShop:AddDivider()
 function SellInventory()
-if (workspace.NPCS.Steven.HumanoidRootPart.Position).Magnitude < 30 then
+if (workspace.NPCS.Steven.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude <= 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Inventory:FireServer()
 end
+
 end
 function SellItemHold()
-if (workspace.NPCS.Steven.HumanoidRootPart.Position).Magnitude < 30 then
+if (workspace.NPCS.Steven.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude < 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Item:FireServer()
 end
 end
