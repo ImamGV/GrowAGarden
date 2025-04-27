@@ -10,7 +10,7 @@ Library.ShowCustomCursor = true
 Library.NotifySide = "Left"
 
 local Window = Library:CreateWindow({
-	Title = 'YOUHUB | Grow A Garden',
+	Title = 'YOUHUB | Grow A Garden | ✧ Alpha v.0.0.1 ✧',
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
@@ -215,6 +215,48 @@ BuySeed("Mushroom")
 end
 end)
 end})
+SeedShop:AddDivider()
+function Sell_Inventory()
+for _,v in ipairs(workspace.NPCS:GetDescendants()) do
+if v.Name == "Steven" then
+if (v.HumanoidRootPart.Position).Magnitude <= 20 then
+game:GetService("ReplicatedStorage").GameEvents.Sell_Inventory:FireServer()
+end
+end
+end
+end
+function Sell_ItemHold()
+for _,v in ipairs(workspace.NPCS:GetDescendants()) do
+if v.Name == "Steven" then
+if (v.HumanoidRootPart.Position).Magnitude <= 20 then
+game:GetService("ReplicatedStorage").GameEvents.Sell_Item:FireServer()
+end
+end
+end
+end
+SeedShop:AddToggle("MyToggle",{
+Text = "Auto Sell Inventory Near",
+Default = false,
+Callback = function(v)
+_G.AutoSellInventoryNear = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoSellInventoryNear then
+Sell_Inventory()
+end
+end)
+end})
+SeedShop:AddToggle("MyToggle",{
+Text = "Auto Sell Item Hold Near",
+Default = false,
+Callback = function(v)
+_G.AutoSellItemHoldNear = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoSellItemHoldNear then
+Sell_ItemHold()
+end
+end)
+end})
+
 local EventGearShop = Tabs.Main:AddRightGroupbox("Easter Shop")
 function BuyEaster(name)
 local args = {
@@ -309,13 +351,13 @@ end
 end)
 end})
 EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Trawel",
+Text = "Auto Buy Trowel",
 Default = false,
 Callback = function(v)
-_G.AutoBuyTrawel = v
+_G.AutoBuyTrowel = v
 game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyTrawel then
-BuySprinkler("Trawel")
+if _G.AutoBuyTrowel then
+BuySprinkler("Trowel")
 end
 end)
 end})
