@@ -204,6 +204,17 @@ BuySeed("Grape")
 end
 end)
 end})
+SeedShop:AddToggle("MyToggle",{
+Text = "Auto Buy Mushroom Seed",
+Default = false,
+Callback = function(v)
+_G.AutoBuyMushroomSeed = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoBuyMushroomSeed then
+BuySeed("Mushroom")
+end
+end)
+end})
 local EventGearShop = Tabs.Main:AddRightGroupbox("Easter Shop")
 function BuyEaster(name)
 local args = {
@@ -357,5 +368,5 @@ EventGearShop:AddButton("Easter UI",function()
 game.Players.LocalPlayer.PlayerGui.Easter_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.Easter_Shop.Enabled
 end)
 EventGearShop:AddButton("Daily Quest UI",function()
-game.Players.LocalPlayer.PlayerGui.DailyQuest_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.DailyQuest_Shop.Enabled
+game.Players.LocalPlayer.PlayerGui.DailyQuests_UI.Enabled = not game.Players.LocalPlayer.PlayerGui.DailyQuests_UI.Enabled
 end)
