@@ -7,7 +7,7 @@ local Options = Library.Options
 local Toggles = Library.Toggles
 Library.ShowToggleFrameInKeybinds = true 
 Library.ShowCustomCursor = true
-Library.NotifySide = "Left"
+Library.NotifySide = "Right"
 
 local Window = Library:CreateWindow({
 	Title = 'YOUHUB | Grow A Garden | Alpha v.0.0.1 ',
@@ -220,7 +220,6 @@ function SellInventory()
 if (workspace.NPCS.Steven.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude <= 30 then
 game:GetService("ReplicatedStorage").GameEvents.Sell_Inventory:FireServer()
 end
-
 end
 function SellItemHold()
 if (workspace.NPCS.Steven.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude < 30 then
@@ -250,76 +249,19 @@ end
 end)
 end})
 
-local EventGearShop = Tabs.Main:AddRightGroupbox("Easter Shop")
-function BuyEaster(name)
+local EventGearShop = Tabs.Main:AddRightGroupbox("Angry Plant Event")
+EventGearShop:AddToggle("MyToggle",{
+Text = "Auto Transaction Near",
+Default = false,
+Callback = function(v)
+_G.AutoTransactionNear = v
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.AutoTransactionNear then
 local args = {
-    [1] = name
+    [1] = "SubmitHeldPlant"
 }
-game:GetService("ReplicatedStorage").GameEvents.BuyEasterStock:FireServer(unpack(args))
-end
-EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Chocolate Carrot Seed",
-Default = false,
-Callback = function(v)
-_G.AutoBuyChocolateCarrotSeed = v
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyChocolateCarrotSeed then
-BuyEaster("Chocolate Carrot")
-end
-end)
-end})
-EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Red Lollipop Seed",
-Default = false,
-Callback = function(v)
-_G.AutoBuyRedLollipopSeed = v
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyRedLollipopSeed then
-BuyEaster("Red Lollipop")
-end
-end)
-end})
-EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Candy Sunflower Seed",
-Default = false,
-Callback = function(v)
-_G.AutoBuyCandySunflowerSeed = v
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyCandySunflowerSeed then
-BuyEaster("Candy Sunflower")
-end
-end)
-end})
-EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Easter Egg Seed",
-Default = false,
-Callback = function(v)
-_G.AutoBuyEasterEggSeed = v
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyEasterEggSeed then
-BuyEaster("Easter Egg")
-end
-end)
-end})
-EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Chocolate Sprinkler",
-Default = false,
-Callback = function(v)
-_G.AutoBuyChocolateSprinkler = v
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyChocolateSprinkler then
-BuyEaster("Chocolate Sprinkler")
-end
-end)
-end})
-EventGearShop:AddToggle("MyToggle",{
-Text = "Auto Buy Candy Blossom Seed",
-Default = false,
-Callback = function(v)
-_G.AutoBuyCandyBlossomSeed = v
-game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoBuyCandyBlossomSeed then
-BuyEaster("Candy Blossom")
+
+game:GetService("ReplicatedStorage").GameEvents.SeedPackGiverEvent:FireServer(unpack(args))
 end
 end)
 end})
