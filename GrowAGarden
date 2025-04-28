@@ -363,8 +363,8 @@ end)
 EventGearShop:AddButton("Gear UI",function()
 game.Players.LocalPlayer.PlayerGui.Gear_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.Gear_Shop.Enabled
 end)
-EventGearShop:AddButton("Easter UI",function()
-game.Players.LocalPlayer.PlayerGui.Easter_Shop.Enabled = not game.Players.LocalPlayer.PlayerGui.Easter_Shop.Enabled
+EventGearShop:AddButton("Basic Seed Ratio UI",function()
+game:GetService("Players").LocalPlayer.PlayerGui.FreeSeedSack_UI.Enabled = not game:GetService("Players").LocalPlayer.PlayerGui.FreeSeedSack_UI.Enabled
 end)
 EventGearShop:AddButton("Daily Quest UI",function()
 game.Players.LocalPlayer.PlayerGui.DailyQuests_UI.Enabled = not game.Players.LocalPlayer.PlayerGui.DailyQuests_UI.Enabled
