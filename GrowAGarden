@@ -256,7 +256,7 @@ Default = false,
 Callback = function(v)
 _G.AutoTransactionNear = v
 game:GetService("RunService").RenderStepped:Connect(function()
-if _G.AutoTransactionNear then
+if _G.AutoTransactionNear and if (workspace.SeedPack.JimTheFlytrap.Model.Base.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude < 30 then
 local args = {
     [1] = "SubmitHeldPlant"
 }
@@ -265,6 +265,11 @@ game:GetService("ReplicatedStorage").GameEvents.SeedPackGiverEvent:FireServer(un
 end
 end)
 end})
+EventGearShop:AddButton("Teleport - Talk Angry Plant",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.SeedPack.JimTheFlytrap.Model.Base.Head.CFrame
+wait(0.3)
+fireproximityprompt(workspace.SeedPack.JimTheFlytrap.Model.Base.Head.ProximityPrompt)
+end)
 EventGearShop:AddDivider()
 EventGearShop:AddLabel("Gear Shop")
 function BuySprinkler(name)
